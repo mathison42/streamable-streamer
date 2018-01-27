@@ -15,7 +15,7 @@ const HomeScreen = ({ navigation }) => (
 );
 
 const DetailsScreen = ({ navigation }) => (
-  <Stream navigation={navigation} />
+  <Stream navigation={navigation} clips={require('./native/json/clips.json').clips} />
 );
 
 const RootNavigator = StackNavigator({

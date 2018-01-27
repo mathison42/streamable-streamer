@@ -11,7 +11,7 @@ export default class App extends React.Component {
 
     const {width, height} = Dimensions.get('window')
     this.state = {
-        clipNum: Math.floor(Math.random() * clips.length),
+        clipNum: Math.floor(Math.random() * this.props.clips.length),
         vertical: height > width ? true : false
     }
 
@@ -29,7 +29,7 @@ export default class App extends React.Component {
 
   nextClip = () => {
     let newNum = this.state.clipNum + 1;
-    if (newNum >= clips.length) {
+    if (newNum >= this.props.clips.length) {
       newNum = 0;
     }
     this.setState({ clipNum: newNum });
@@ -38,7 +38,7 @@ export default class App extends React.Component {
   prevClip = () => {
     let newNum = this.state.clipNum - 1;
     if (newNum < 0) {
-      newNum = clips.length - 1;
+      newNum = this.props.clips.length - 1;
     }
     this.setState({ clipNum: newNum });
   }
@@ -64,7 +64,7 @@ export default class App extends React.Component {
 
           <View style={styles.container}>
             {/* Video */}
-            <WebView source={{uri: clips[this.state.clipNum].streamable}} />
+            <WebView source={{uri: this.props.clips[this.state.clipNum].streamable}} />
 
             {/* Arrows */}
             <StreamButton text={'<'} style={[styles.arrow, styles.left_arrow]} onPress={this.prevClip} />
@@ -72,19 +72,19 @@ export default class App extends React.Component {
           </View>
 
           {/* Description */}
-          <PopUp text={clips[this.state.clipNum].description} />
+          <PopUp text={this.props.clips[this.state.clipNum].description} />
 
           { this.state.vertical
             ?
             /* Clip List */
             <View style={styles.container_list}>
               <FlatList
-                data={clips}
+                data={this.props.clips}
                 renderItem={({item}) =>
                   <Button
                     style={ styles.item }
                     title={ item.streamable }
-                    onPress={()=>this.setState({ clipNum: clips.indexOf(item) })}>
+                    onPress={()=>this.setState({ clipNum: this.props.clips.indexOf(item) })}>
                   </Button>}
               />
             </View>
@@ -96,24 +96,6 @@ export default class App extends React.Component {
     );
   }
 }
-
-const clips = [
-  {
-    key: 't8x2h',
-    streamable: 'https://streamable.com/s/t8x2h/yexfin',
-    description: 'Lost at orbiting. The initial angle is far better than where she orbits.'
-  },
-  {
-    key: 'rkofc',
-    streamable: 'https://streamable.com/s/rkofc/zpjkyr',
-    description: 'Fakes - Flick Shimmy!'
-  },
-  {
-    key: 'teggv',
-    streamable: 'https://streamable.com/s/teggv/wnkxmr',
-    description: 'Joke - Elite Mark'
-  },
-]
 
 const styles = StyleSheet.create({
   titleText: {
