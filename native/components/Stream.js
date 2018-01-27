@@ -48,7 +48,7 @@ export default class App extends React.Component {
         <View onLayout={this.onLayout.bind(this)} style={styles.container}>
           { this.state.vertical
             ?
-            <View style={{flexDirection: 'row'}}>
+            <View style={{flexDirection: 'row', alignItems: 'center' }}>
               <TouchableHighlight
                 underlayColor='#ff8080'
                 onPress={()=> this.props.navigation.dispatch(NavigationActions.back())}
