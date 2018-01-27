@@ -47,12 +47,14 @@ export default class App extends React.Component {
     return (
         <View onLayout={this.onLayout.bind(this)} style={styles.container}>
 
-          {/* Video */}
-          <WebView source={{uri: clips[this.state.clipNum].streamable}} />
+          <View style={styles.container}>
+            {/* Video */}
+            <WebView source={{uri: clips[this.state.clipNum].streamable}} />
 
-          {/* Arrows */}
-          <StreamButton text={'<'} style={[styles.arrow, styles.left_arrow]} onPress={this.prevClip} />
-          <StreamButton text={'>'} style={[styles.arrow, styles.right_arrow]} onPress={this.nextClip} />
+            {/* Arrows */}
+            <StreamButton text={'<'} style={[styles.arrow, styles.left_arrow]} onPress={this.prevClip} />
+            <StreamButton text={'>'} style={[styles.arrow, styles.right_arrow]} onPress={this.nextClip} />
+          </View>
 
           {/* Description */}
           <PopUp text={clips[this.state.clipNum].description} />
@@ -63,7 +65,12 @@ export default class App extends React.Component {
             <View style={styles.container}>
               <FlatList
                 data={clips}
-                renderItem={({item}) => <Button style={styles.item} title={item.streamable} onPress={()=>this.setState({ clipNum: clips.indexOf(item) })}></Button>}
+                renderItem={({item}) =>
+                  <Button
+                    style={styles.item}
+                    title={item.streamable} 
+                    onPress={()=>this.setState({ clipNum: clips.indexOf(item) })}>
+                  </Button>}
               />
             </View>
             :
