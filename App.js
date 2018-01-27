@@ -62,13 +62,13 @@ export default class App extends React.Component {
           { this.state.vertical
             ?
             /* Clip List */
-            <View style={styles.container}>
+            <View style={styles.container_list}>
               <FlatList
                 data={clips}
                 renderItem={({item}) =>
                   <Button
                     style={styles.item}
-                    title={item.streamable} 
+                    title={item.streamable}
                     onPress={()=>this.setState({ clipNum: clips.indexOf(item) })}>
                   </Button>}
               />
@@ -103,6 +103,10 @@ const clips = [
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+  },
+  container_list: {
+    flex: 2,
     justifyContent: 'center',
   },
   arrow: {
