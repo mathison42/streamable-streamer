@@ -56,7 +56,7 @@ export default class App extends React.Component {
               >
                 <Text style={{fontSize: 50, color: 'black', textAlign: 'center' }}>{'<-'}</Text>
               </TouchableHighlight>
-              <Text style={[styles.titleText, {flex: 2}]} >Details</Text>
+              <Text style={[styles.titleText, {flex: 2}]} >{this.props.title}</Text>
             </View>
             :
             null
@@ -99,7 +99,7 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   titleText: {
-    fontSize: 50,
+    fontSize: 36,
     fontWeight: 'bold',
     textAlign: 'left',
   },
