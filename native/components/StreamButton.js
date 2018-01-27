@@ -4,7 +4,7 @@ import { View, TouchableHighlight, StyleSheet, Text } from 'react-native';
 const StreamButton = (props) => {
   return (
     <View style={props.style}>
-      <TouchableHighlight style={styles.addButton} underlayColor='#ff8080' onPress={()=>{console.log('pressed')}}>
+      <TouchableHighlight style={styles.addButton} underlayColor='#ff8080' onPress={props.onPress}>
         <Text style={{fontSize: 50, color: 'black'}}>{props.text}</Text>
       </TouchableHighlight>
     </View>

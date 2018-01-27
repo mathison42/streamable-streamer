@@ -5,24 +5,60 @@ import { StyleSheet, Text, View, WebView, Modal, TouchableHighlight } from 'reac
 
 export default class App extends React.Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+        clipNum: Math.floor(Math.random() * clips.length)
+    }
+
+  }
+
+  nextClip = () => {
+    let newNum = this.state.clipNum + 1;
+    if (newNum >= clips.length) {
+      newNum = 0;
+    }
+    this.setState({ clipNum: newNum })
+  }
+
+  prevClip = () => {
+    let newNum = this.state.clipNum - 1;
+    if (newNum < 0) {
+      newNum = clips.length - 1;
+    }
+    this.setState({ clipNum: newNum })
+  }
+
   render() {
     return (
         <View style={styles.container}>
 
           {/* Video */}
-          <WebView source={{uri: 'https://streamable.com/s/t8x2h/yexfin'}} />
+          <WebView source={{uri: clips[this.state.clipNum].streamable}} />
 
           {/* Arrows */}
-          <StreamButton text={'<'} style={[styles.arrow, styles.left_arrow]}/>
-          <StreamButton text={'>'} style={[styles.arrow, styles.right_arrow]}/>
+          <StreamButton text={'<'} style={[styles.arrow, styles.left_arrow]} onPress={this.prevClip} />
+          <StreamButton text={'>'} style={[styles.arrow, styles.right_arrow]} onPress={this.nextClip} />
 
           {/* Description */}
-          <PopUp text="this is textthis is textthis is textthis is textthis is textthis is textthis is textthis is textthis is textthis is textthis is text" />
+          <PopUp text={clips[this.state.clipNum].description} />
 
         </View>
     );
   }
 }
+
+const clips = [
+  {
+    streamable: 'https://streamable.com/s/t8x2h/yexfin',
+    description: 'Lost at orbiting. The initial angle is far better than where she orbits.'
+  },
+  {
+    streamable: 'https://streamable.com/s/rkofc/zpjkyr',
+    description: 'Fakes - Flick Shimmy!'
+  },
+]
 
 const styles = StyleSheet.create({
   container: {
