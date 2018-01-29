@@ -1,5 +1,15 @@
 {
-  "expo": {
-    "sdkVersion": "23.0.0"
-  }
+    "expo": {
+        "name": "Streamable Streamer",
+        "icon": "./native/pics/basketball-jersey.png",
+        "version": "1.0.0",
+        "slug": "streamable-streamer",
+        "sdkVersion": "23.0.0",
+        "ios": {
+          "bundleIdentifier": "com.twodiscs.streamblestreamer"
+        },
+        "android": {
+          "package": "com.twodiscs.streamblestreamer"
+        }
+    }
 }
