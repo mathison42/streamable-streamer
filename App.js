@@ -12,6 +12,14 @@ const HomeScreen = ({ navigation }) => (
       title="Go to details"
     />
     <Button
+      onPress={() => navigation.navigate('VerticalStackPlays')}
+      title="Vertical Stack Plays"
+    />
+    <Button
+      onPress={() => navigation.navigate('HorizontalStackPlays')}
+      title="Horizontal Stack Plays"
+    />
+    <Button
       onPress={() => navigation.navigate('DanYoung')}
       title="Dan Young: GOTD"
     />
@@ -24,6 +32,14 @@ const HomeScreen = ({ navigation }) => (
 
 const DetailsScreen = ({ navigation }) => (
   <Stream title={'Test'} navigation={navigation} clips={require('./native/json/clips.json').clips} />
+);
+
+const VerticalStackPlays = ({ navigation }) => (
+  <Stream title={'@Vert Plays'} navigation={navigation} clips={require('./native/json/vertical-stack-plays.json').clips} />
+);
+
+const HorizontalStackPlays = ({ navigation }) => (
+  <Stream title={'@Horiz Plays'} navigation={navigation} clips={require('./native/json/horizontal-stack-plays.json').clips} />
 );
 
 const DanYoung = ({ navigation }) => (
@@ -45,6 +61,18 @@ const RootNavigator = StackNavigator({
     screen: DetailsScreen,
     navigationOptions: {
       headerTitle: 'Details'
+    },
+  },
+  VerticalStackPlays: {
+    screen: VerticalStackPlays,
+    navigationOptions: {
+      headerTitle: 'VerticalStackPlays'
+    },
+  },
+  HorizontalStackPlays: {
+    screen: HorizontalStackPlays,
+    navigationOptions: {
+      headerTitle: 'HorizontalStackPlays'
     },
   },
   DanYoung: {

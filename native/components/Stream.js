@@ -2,7 +2,7 @@ import React from 'react';
 import PopUp from './PopUp';
 import StreamButton from './StreamButton';
 import { NavigationActions } from 'react-navigation'
-import { Dimensions, StyleSheet, Text, View, WebView, Modal, TouchableHighlight, FlatList, Button } from 'react-native';
+import { Dimensions, StyleSheet, Text, View, WebView, Modal, TouchableHighlight, SectionList, Button } from 'react-native';
 
 export default class App extends React.Component {
 
@@ -11,7 +11,8 @@ export default class App extends React.Component {
 
     const {width, height} = Dimensions.get('window')
     this.state = {
-        clipNum: Math.floor(Math.random() * this.props.clips.length),
+        clipSec: 0,
+        clipNum: Math.floor(Math.random() * this.props.clips[0].data.length),
         vertical: height > width ? true : false
     }
 
@@ -29,7 +30,7 @@ export default class App extends React.Component {
 
   nextClip = () => {
     let newNum = this.state.clipNum + 1;
-    if (newNum >= this.props.clips.length) {
+    if (newNum >= this.props.clips[this.state.clipSec].data.length) {
       newNum = 0;
     }
     this.setState({ clipNum: newNum });
@@ -38,7 +39,7 @@ export default class App extends React.Component {
   prevClip = () => {
     let newNum = this.state.clipNum - 1;
     if (newNum < 0) {
-      newNum = this.props.clips.length - 1;
+      newNum = this.props.clips[this.state.clipSec].data.length - 1;
     }
     this.setState({ clipNum: newNum });
   }
@@ -64,7 +65,7 @@ export default class App extends React.Component {
 
           <View style={styles.container}>
             {/* Video */}
-            <WebView source={{uri: this.props.clips[this.state.clipNum].streamable}} />
+            <WebView source={{uri: this.props.clips[this.state.clipSec].data[this.state.clipNum].streamable}} />
 
             {/* Arrows */}
             <StreamButton text={'<'} style={[styles.arrow, styles.left_arrow]} onPress={this.prevClip} />
@@ -72,20 +73,24 @@ export default class App extends React.Component {
           </View>
 
           {/* Description */}
-          <PopUp text={this.props.clips[this.state.clipNum].description} />
+          <PopUp text={this.props.clips[this.state.clipSec].data[this.state.clipNum].description} />
 
           { this.state.vertical
             ?
             /* Clip List */
             <View style={styles.container_list}>
-              <FlatList
-                data={this.props.clips}
-                renderItem={({item}) =>
+              <SectionList
+                sections={this.props.clips}
+                renderItem={({item, index, section}) =>
                   <Button
                     style={ styles.item }
                     title={ item.streamable }
-                    onPress={()=>this.setState({ clipNum: this.props.clips.indexOf(item) })}>
-                  </Button>}
+                    onPress={()=> this.setState({ clipSec: this.props.clips.indexOf(section), clipNum: index })}>
+                    {item}
+                  </Button>
+                }
+                renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+                keyExtractor={(item, index) => index}
               />
             </View>
             :

@@ -1,19 +1,24 @@
 {
   "clips": [
     {
-      "key": "2r5ny",
-      "streamable": "https://streamable.com/s/2r5ny/rfjpnv",
-      "description": "Pull coverage should be the first thing on every defense's mind. It can lead to short field turnovers, or can blow up pull plays, or simply get the offense out of rhythm."
-    },
-    {
-      "key": "MeatyDelayedFrenchbulldog",
-      "streamable": "https://gfycat.com/ifr/MeatyDelayedFrenchbulldog",
-      "description": "Pretty typical sidestack play, but I really like how our center handler shows field vision in this clip. As the iso runs deep, he draws help from the back of the stack. Our last stack offender recognizes and cuts for the easy under."
-    },
-    {
-      "key": "InfamousFirstBedlingtonterrier",
-      "streamable": "https://gfycat.com/ifr/InfamousFirstBedlingtonterrier",
-      "description": "Continuation cutting every coach would be happy to have. Offense does a great job leaving the endzone open, and the cutter moves with perfect timing to attack the huge space. Thanks @LongoNick for finding the play"
+      "title": "Dan 'Bones' Young: Gif of the Day",
+      "data": [
+        {
+          "key": "2r5ny",
+          "streamable": "https://streamable.com/s/2r5ny/rfjpnv",
+          "description": "Pull coverage should be the first thing on every defense's mind. It can lead to short field turnovers, or can blow up pull plays, or simply get the offense out of rhythm."
+        },
+        {
+          "key": "MeatyDelayedFrenchbulldog",
+          "streamable": "https://gfycat.com/ifr/MeatyDelayedFrenchbulldog",
+          "description": "Pretty typical sidestack play, but I really like how our center handler shows field vision in this clip. As the iso runs deep, he draws help from the back of the stack. Our last stack offender recognizes and cuts for the easy under."
+        },
+        {
+          "key": "InfamousFirstBedlingtonterrier",
+          "streamable": "https://gfycat.com/ifr/InfamousFirstBedlingtonterrier",
+          "description": "Continuation cutting every coach would be happy to have. Offense does a great job leaving the endzone open, and the cutter moves with perfect timing to attack the huge space. Thanks @LongoNick for finding the play"
+        }
+      ]
     }
   ]
 }
