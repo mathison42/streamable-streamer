@@ -1,7 +1,7 @@
 {
     "expo": {
         "name": "Streamable Streamer",
-        "icon": "./native/pics/goby-logo.jpg",
+        "icon": "./native/pics/goby-logo.png",
         "version": "1.0.0",
         "slug": "streamable-streamer",
         "sdkVersion": "23.0.0",
